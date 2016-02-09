@@ -6,6 +6,8 @@
 
 package io.github.jass2125.locadora.jpa;
 
+import java.util.List;
+
 /**
  * @author Anderson Souza
  * @since 2015
@@ -13,5 +15,7 @@ package io.github.jass2125.locadora.jpa;
 public interface IAutomovelDao {
     
     public void add(Automovel automovel);
+    
+    public List<Automovel> getAutomoveis();
     
 }

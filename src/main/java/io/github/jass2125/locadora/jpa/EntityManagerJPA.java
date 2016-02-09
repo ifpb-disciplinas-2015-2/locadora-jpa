@@ -6,7 +6,7 @@
 
 package io.github.jass2125.locadora.jpa;
 
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 /**
@@ -15,14 +15,14 @@ import javax.persistence.Persistence;
  * @email jair_anderson_bs@hotmail.com
  * @since 2015, Feb 9, 2016
  */
-public class EntityManagerFactoryJPA {
-    private static EntityManagerFactory emf;
+public class EntityManagerJPA {
+    private static EntityManager em;
     
-    public static EntityManagerFactory getEntityManagerFactory(){
-        if(emf == null){
-            emf = Persistence.createEntityManagerFactory("default");
+    public static EntityManager getEntityManager(){
+        if(em == null) {
+            em = Persistence.createEntityManagerFactory("default").createEntityManager();
         }
-        return emf;
+        return em;
     }
     
 

@@ -6,8 +6,9 @@
 
 package io.github.jass2125.locadora.jpa;
 
+import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,12 +20,19 @@ public class AutomovelDao implements IAutomovelDao{
 
     @Override
     public void add(Automovel automovel) {
-        EntityManagerFactory emf = EntityManagerFactoryJPA.getEntityManagerFactory();
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerJPA.getEntityManager();
         em.getTransaction().begin();
         em.persist(automovel);
         em.getTransaction().commit();
         em.clear();
+    }
+
+    @Override
+    public List<Automovel> getAutomoveis() {
+        EntityManager em = EntityManagerJPA.getEntityManager();
+        Query query = em.createQuery("Select a FROM Automovel a",Automovel.class);
+        List<Automovel> automoveis = query.getResultList();
+        return automoveis;
     }
 
 }

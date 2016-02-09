@@ -8,7 +8,6 @@ package io.github.jass2125.locadora.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -20,7 +19,7 @@ public class AutomovelDao implements IAutomovelDao{
 
     @Override
     public void add(Automovel automovel) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManagerFactory emf = EntityManagerFactoryJPA.getEntityManagerFactory();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(automovel);

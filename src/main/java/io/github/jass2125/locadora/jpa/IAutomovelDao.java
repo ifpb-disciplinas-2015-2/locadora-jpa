@@ -17,5 +17,7 @@ public interface IAutomovelDao {
     public void add(Automovel automovel);
     
     public List<Automovel> getAutomoveis();
+
+    public void delete(Long identificador);
     
 }

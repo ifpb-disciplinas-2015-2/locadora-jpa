@@ -24,7 +24,7 @@ public class AutomovelDao implements IAutomovelDao{
         em.getTransaction().begin();
         em.persist(automovel);
         em.getTransaction().commit();
-        em.clear();
+//        em.close();
     }
 
     @Override
@@ -32,7 +32,19 @@ public class AutomovelDao implements IAutomovelDao{
         EntityManager em = EntityManagerJPA.getEntityManager();
         Query query = em.createQuery("Select a FROM Automovel a",Automovel.class);
         List<Automovel> automoveis = query.getResultList();
+//        em.close();
         return automoveis;
+    }
+
+    @Override
+    public void delete(Long identificador) {
+        
+        EntityManager em = EntityManagerJPA.getEntityManager();
+        em.getTransaction().begin();
+        Automovel automovel = em.getReference(Automovel.class, identificador);
+        em.remove(automovel);
+        em.getTransaction().commit();
+//        em.close();
     }
 
 }

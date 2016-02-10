@@ -17,6 +17,10 @@ import javax.persistence.Persistence;
  */
 public class EntityManagerJPA {
     private static EntityManager em;
+
+    private EntityManagerJPA() {
+    }
+    
     
     public static EntityManager getEntityManager(){
         if(em == null) {
